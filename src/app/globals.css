@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --gold: 45 100% 60%;
+    --gold-foreground: 222 47% 11%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 224 71.4% 4.1%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.gold-gradient {
+  background: linear-gradient(90deg, hsl(var(--gold) / 0.8) 0%, hsl(var(--gold) / 0.4) 100%);
+}
+
+.blue-gradient {
+  background: linear-gradient(90deg, hsl(222 47% 20%) 0%, hsl(222 47% 11%) 100%);
+}
+
+.network-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.network-animation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 30% 50%, hsl(var(--gold) / 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, hsl(222 47% 30% / 0.2) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.trust-score-ring {
+  --size: 220px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(hsl(var(--gold)), transparent 65%);
+  position: relative;
+}
+
+.trust-score-ring::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) - 20px);
+  height: calc(var(--size) - 20px);
+  border-radius: 50%;
+  background: hsl(var(--background));
+}
+
+.trust-score-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-md transition-colors hover:bg-secondary cursor-pointer;
+}
+
+.sidebar-item.active {
+  @apply bg-secondary text-gold;
+}
+
+.sidebar-item svg {
+  @apply w-5 h-5;
+}
+
+.card-hover {
+  transition-property: all;
+  transition-duration: 300ms;
+}
+
+.card-hover:hover {
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
+  border-color: rgba(234, 179, 8, 0.3);
+}
