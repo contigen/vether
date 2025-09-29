@@ -12,7 +12,7 @@ import { QUICK_ACTIONS } from '@/lib/constants'
 import { QuickActionsCard } from '@/components/chat'
 import { RiskDashboard } from '@/components/chat/risk-dashboard'
 import { PropertySnapshot } from '@/components/chat/property-snapshot'
-import { TrustPanel } from '@/components/chat/trust-panel'
+// import { TrustPanel } from '@/components/chat/trust-panel'
 import { ComplianceAlerts } from '@/components/chat/compliance-alerts'
 import { LegalAnalysisCard } from '@/components/chat/legal-analysis-card'
 
