@@ -61,7 +61,7 @@ export async function loginUser(
     const user = await getUser(validatedFormData.email)
     if (user && typeof user === 'object' && user !== null && 'id' in user) {
       await signIn(`agent`, {
-        id: user.id,
+        id: user.id as string,
         email: validatedFormData.email,
         name: validatedFormData.name,
         location: validatedFormData.location,
@@ -89,7 +89,7 @@ export async function loginUser(
       const { success, id } = await createReplicaUser({
         email: validatedFormData.email,
         name: validatedFormData.name,
-        id: newUser.id,
+        id: newUser.id as string,
       })
       revalidateTag('agents')
       if (!success) {
@@ -111,12 +111,12 @@ export async function loginUser(
       if (!replicaSuccess) return { message: `failed to create replica user` }
 
       await addUserReplicaUuid({
-        id: newUser.id,
+        id: newUser.id as string,
         replicaUuid: uuid,
       })
 
       await signIn(`agent`, {
-        id: newUser.id,
+        id: newUser.id as string,
         email: validatedFormData.email,
         name: validatedFormData.name,
         replicaUuid: uuid,
