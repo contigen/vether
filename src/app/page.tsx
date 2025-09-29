@@ -4,17 +4,23 @@ import { Card } from '@/components/ui/card'
 import { FileText, ArrowRight, Bot } from 'lucide-react'
 import Link from 'next/link'
 import { Logo } from '@/components/ui/logo'
+import { auth } from '@/auth'
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth()
+  const isBuyer = session?.user?.role === 'BUYER'
+  const isAgent = session?.user?.role === 'AGENT'
   return (
     <div>
       <header className='border-b border-border/40 backdrop-blur-sm sticky top-0 z-50'>
         <div className='container flex items-center justify-between py-4'>
           <Logo />
           <div className='flex items-center gap-2'>
-            <Button variant='ghost' size='sm'>
-              <Link href='/connect'>Connect Wallet</Link>
-            </Button>
+            {!isAgent && (
+              <Button variant='ghost' size='sm'>
+                <Link href='/connect'>Connect Wallet</Link>
+              </Button>
+            )}
             <ButtonGold size='sm'>
               <Link href='/chat'>Try Vether</Link>
             </ButtonGold>
