@@ -22,13 +22,14 @@ type MessageBubbleProps = {
   userRole?: UserRole | null
 }
 
-const COMPONENT_REGISTRY = {
-  trustAndVerification: TrustPanel,
-  risk: RiskDashboard,
-  property: PropertySnapshot,
-  compliance: ComplianceAlerts,
-  legal: LegalAnalysisCard,
-}
+// Component registry for future use
+// const COMPONENT_REGISTRY = {
+//   trustAndVerification: TrustPanel,
+//   risk: RiskDashboard,
+//   property: PropertySnapshot,
+//   compliance: ComplianceAlerts,
+//   legal: LegalAnalysisCard,
+// }
 
 export function MessageBubble({ message, onQuickAction }: MessageBubbleProps) {
   const isUser = message.type === 'user'

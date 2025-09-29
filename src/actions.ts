@@ -59,7 +59,7 @@ export async function loginUser(
       description,
     })
     const user = await getUser(validatedFormData.email)
-    if (user) {
+    if (user && 'id' in user) {
       await signIn(`agent`, {
         id: user.id,
         email: validatedFormData.email,
@@ -78,7 +78,7 @@ export async function loginUser(
       description: validatedFormData.description,
     })
 
-    if (!newUser) {
+    if (!newUser || !('id' in newUser)) {
       return { message: `failed to create user` }
     } else {
       const { success, id } = await createReplicaUser({
