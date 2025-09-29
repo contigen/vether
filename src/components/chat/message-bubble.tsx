@@ -4,7 +4,6 @@ import { Message, UploadedFile, UserRole } from '@/types'
 import type {
   RiskData,
   PropertyData,
-  TrustPanel as TrustPanelType,
   ComplianceAlert,
   LegalSummary,
 } from '@/lib/schema'
@@ -36,8 +35,8 @@ export function MessageBubble({ message, onQuickAction }: MessageBubbleProps) {
 
   const shouldShowQuickActions = !isUser && message.id == '1' && onQuickAction
 
-  const Component =
-    COMPONENT_REGISTRY[message.componentType as keyof typeof COMPONENT_REGISTRY]
+  // Component registry for future use
+  // const Component = COMPONENT_REGISTRY[message.componentType as keyof typeof COMPONENT_REGISTRY]
 
   return (
     <div className={`flex gap-4 ${isUser ? 'justify-end' : 'justify-start'}`}>

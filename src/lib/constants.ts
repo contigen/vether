@@ -6,7 +6,6 @@ import {
   CheckCircle,
   AlertTriangle,
   Shield,
-  Users,
 } from 'lucide-react'
 import {
   QuickAction,
@@ -15,7 +14,6 @@ import {
   TrustPanelItem,
   PropertyData,
   ComplianceAlert,
-  CollaborationItem,
 } from '@/types'
 
 export const VALID_FILE_TYPES = [
